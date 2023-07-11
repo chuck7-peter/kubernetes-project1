@@ -4,9 +4,24 @@ This repo along with a url creates a Jenkins pipeline with GitOps to deploy code
 ## Jenkins installation
 Jenkins is installed on EC2. Follow the instructions on https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/ . 
 
-1. Install Docker on the EC2 after Jenkins is installed by following the instructions on https://serverfault.com/questions/836198/how-to-install-docker-on-aws-ec2-instance-with-ami-ce-ee-update
+1. Install Docker on the EC2 after Jenkins is installed by following these below steps
+Update the packages on your instance
 
-2. Install Git on the EC2 by running `sudo apt install git`
+[ec2-user ~]$ sudo yum update -y
+
+Install Docker
+
+[ec2-user ~]$ sudo yum install docker -y
+
+Start the Docker Service
+
+[ec2-user ~]$ sudo service docker start
+
+Add the ec2-user to the docker group so you can execute Docker commands without using sudo.
+
+[ec2-user ~]$ sudo usermod -a -G docker ec2-user
+
+3. Install Git on the EC2 by running `sudo apt install git`
 
 ### Jenkins plugins
 
